@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hola, mundo 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blush: #ffe3f0;
+      --pink: #ff4fa3;
+      --pink-soft: #ffb3d6;
+      --lilac: #c9a7ff;
+      --plum: #2a1540;
+      --plum-2: #3b2058;
+      --cream: #fff8fc;
+      --mint: #8ff0d0;
+      --display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      background-color: var(--blush);
+      background-image: radial-gradient(var(--pink-soft) 1.5px, transparent 1.5px);
+      background-size: 26px 26px;
+      color: var(--plum);
+      font-family: var(--display);
+      display: grid;
+      place-items: center;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+    :focus-visible { outline: 3px solid var(--plum); outline-offset: 3px; border-radius: 8px; }
+
+    .stage { width: min(720px, 100%); position: relative; }
+
+    h1 {
+      font-weight: 700;
+      font-size: clamp(2.8rem, 11vw, 6rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin: 0 0 .5rem;
+      color: var(--plum);
+    }
+    h1 .heart { color: var(--pink); display: inline-block; }
+    p.sub { font-size: 1.2rem; font-weight: 500; margin: 0 0 1.75rem; color: #6b4a8a; }
+
+    /* Ventana de editor */
+    .window {
+      background: var(--plum);
+      border-radius: 18px;
+      border: 3px solid var(--plum);
+      box-shadow: 10px 10px 0 var(--pink);
+      overflow: hidden;
+    }
+    .bar {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1rem;
+      background: var(--lilac);
+      border-bottom: 3px solid var(--plum);
+    }
+    .bar i { width: .85rem; height: .85rem; border-radius: 50%; border: 2px solid var(--plum); display: block; }
+    .bar i:nth-child(1) { background: var(--pink); }
+    .bar i:nth-child(2) { background: #ffe27a; }
+    .bar i:nth-child(3) { background: var(--mint); }
+    .bar span { margin-left: .6rem; font-family: var(--mono); font-size: .85rem; font-weight: 500; color: var(--plum); }
+
+    pre {
+      margin: 0;
+      padding: 1.4rem 1.5rem;
+      font-family: var(--mono);
+      font-size: clamp(.82rem, 2.8vw, 1rem);
+      line-height: 1.9;
+      color: #f1e6ff;
+      overflow-x: auto;
+    }
+    .ln { color: #7d6a9c; user-select: none; display: inline-block; width: 1.8rem; }
+    .kw { color: var(--lilac); }
+    .fn { color: var(--mint); }
+    .st { color: var(--pink-soft); }
+    .cm { color: #8f7bb0; }
+    .out { color: var(--mint); }
+    .cursor { display: inline-block; width: .6ch; height: 1.1em; background: var(--pink); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 2rem; }
+    button {
+      font: inherit;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #fff;
+      background: var(--pink);
+      border: 3px solid var(--plum);
+      border-radius: 999px;
+      padding: .65rem 1.5rem;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--plum);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    button:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--plum); }
+    button:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--plum); }
+    footer { font-size: .95rem; font-weight: 500; color: #6b4a8a; }
+    footer a { color: var(--plum); }
+
+    .spark { position: absolute; color: var(--pink); font-size: 1.6rem; pointer-events: none; }
+    .s1 { top: -1.2rem; right: 2%; }
+    .s2 { top: 38%; left: -1.6rem; color: var(--lilac); font-size: 1.2rem; }
+    .s3 { bottom: 3.5rem; right: -1rem; color: var(--lilac); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cursor { animation: none; }
+      button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <span class="spark s1" aria-hidden="true">✦</span>
+    <span class="spark s2" aria-hidden="true">✦</span>
+    <span class="spark s3" aria-hidden="true">✦</span>
+
+    <h1>Hola, mundo <span class="heart" aria-hidden="true">♡</span></h1>
+    <p class="sub">Mi primera web, publicada sola con GitHub Actions y Surge.sh.</p>
+
+    <div class="window" role="img" aria-label="Editor de código mostrando un programa que imprime Hola, mundo">
+      <div class="bar"><i></i><i></i><i></i><span>hola_mundo.js</span></div>
+<pre><span class="ln">1</span><span class="cm">// mi primer programa</span>
+<span class="ln">2</span><span class="kw">const</span> mensaje = <span class="st">"Hola, mundo"</span>;
+<span class="ln">3</span><span class="fn">console</span>.<span class="fn">log</span>(mensaje);
+<span class="ln">4</span>
+<span class="ln">5</span><span class="out" id="salida">&gt; </span><span class="cursor" aria-hidden="true"></span></pre>
+    </div>
+
+    <div class="row">
+      <button id="run" type="button">▶ Ejecutar</button>
+      <footer>Parcial Electiva 2 · Emely Almonte · <a href="https://github.com/EmelyAlmonte/parcial--electiva-2" rel="noopener">Repositorio</a></footer>
+    </div>
+  </main>
+
+  <script>
+    var salida = document.getElementById("salida");
+    var btn = document.getElementById("run");
+    var texto = "Hola, mundo ♡";
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var timer;
+
+    function escribir() {
+      clearInterval(timer);
+      salida.textContent = "> ";
+      if (reduce) { salida.textContent += texto; return; }
+      var n = 0;
+      timer = setInterval(function () {
+        n++;
+        salida.textContent = "> " + texto.slice(0, n);
+        if (n >= texto.length) clearInterval(timer);
+      }, 90);
+    }
+
+    btn.addEventListener("click", escribir);
+    setTimeout(escribir, 600);
+  </script>
+</body>
+</html>
